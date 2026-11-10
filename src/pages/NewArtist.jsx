@@ -34,43 +34,59 @@ function NewArtist() {
 
   return (
     <div>
-      <h1>Add New Artist</h1>
-      <form onSubmit={handleSubmit}>
-<input
-        type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-      <input
-  type="text"
-  value={genre}
-  onChange={(event) => setGenre(event.target.value)}
-/>
-      <textarea
-        value={bio}
-        onChange={(event) => setBio(event.target.value)}
-      />
-    <select
-  value={day}
-  onChange={(event) => setDay(event.target.value)}
->
-  <option value="Friday">Friday</option>
-  <option value="Saturday">Saturday</option>
-  <option value="Sunday">Sunday</option>
-</select>
-    <input
-  type="time"
-  value={time}
-  onChange={(event) => setTime(event.target.value)}
-/>
-    <select
-  value={stageId}
-  onChange={(event) => setStageId(event.target.value)}
->
-  <option value="1">Main Stage</option>
-  <option value="2">Garden Stage</option>
+      
+<h1>Add New Artist</h1>
+
+<form onSubmit={handleSubmit}>
+  <label>Artist Name</label>
+  <input
+    type="text"
+    value={name}
+    onChange={(event) => setName(event.target.value)}
+  />
+
+  <label>Genre</label>
+  <input
+    type="text"
+    value={genre}
+    onChange={(event) => setGenre(event.target.value)}
+  />
+
+  <label>Bio</label>
+  <textarea
+    value={bio}
+    onChange={(event) => setBio(event.target.value)}
+  />
+
+  <label>Day</label>
+  <select
+    value={day}
+    onChange={(event) => setDay(event.target.value)}
+  >
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+    <option value="Sunday">Sunday</option>
   </select>
-  <button type="submit">Add Artist</button></form>
+
+  <label>Time</label>
+  <input
+    type="time"
+    value={time}
+    onChange={(event) => setTime(event.target.value)}
+  />
+
+  <label>Stage</label>
+  <select
+    value={stageId}
+    onChange={(event) => setStageId(event.target.value)}
+  >
+    <option value="1">Main Stage</option>
+    <option value="2">Garden Stage</option>
+  </select>
+
+  <button type="submit">Add Artist</button>
+</form>
+
     </div>
   );
 }

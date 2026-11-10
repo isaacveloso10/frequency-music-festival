@@ -14,15 +14,19 @@ function Lineup() {
             });
     }, []);
   return (
-    <div>
-      <h1>Lineup</h1>
-      <ul>
+    <div className="artists-page">
+      <h1 className="artists-title">ARTISTS.</h1>
+      
+      <ul className="artists-grid">
         {artists.map((artist) => (
-          <li key={artist.id}>
+          <li className="artist-card" key={artist.id}>
   <Link to={`/artists/${artist.id}`}>
-    {artist.name}
-  </Link>
+<img src={artist.image} alt={artist.name} />
+  <h2>{artist.name}</h2>
+  <p>{artist.genre}</p>
+</Link>
 </li>
+
         ))}
       </ul>
     </div>
@@ -30,3 +34,4 @@ function Lineup() {
 }
 
 export default Lineup;
+

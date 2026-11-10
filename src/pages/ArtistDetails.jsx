@@ -30,6 +30,24 @@ function ArtistDetails() {
       });
   }, [artist]);
 
+   const handleDelete = () => {
+  const confirmed = window.confirm(
+    "Are you sure you want to delete this artist?"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  axios
+    .delete(`https://module-2-json-server-nv61.onrender.com/artists/${id}`)
+    .then(() => {
+      navigate("/lineup");
+    })
+    .catch((error) => {
+      console.error("Error deleting artist:", error);
+    });
+};
 
   if (!artist) {
       return <p>Loading artist...</p>;
@@ -45,6 +63,7 @@ function ArtistDetails() {
       <p>{artist.day}</p>
       <p>{artist.time}</p>
       <p>{stage?.name || "Loading stage..."}</p>
+      <button onClick={handleDelete}>Delete Artist</button>
     </div>
   )
 }
