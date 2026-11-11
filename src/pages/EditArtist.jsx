@@ -34,11 +34,11 @@ const handleSubmit = (event) => {
 };
 
   return (
-  <div>
-    <h1>Edit Artist</h1>
+  <div className="edit-artist-page">
+  <h1 className="edit-artist-title">EDIT ARTIST.</h1>
     <h2>{artist?.name}</h2>
     {artist && (
-  <form onSubmit={handleSubmit}>
+  <form className="edit-artist-form" onSubmit={handleSubmit}>
     <label>Artist Name</label>
     <input
       type="text"
@@ -52,6 +52,18 @@ const handleSubmit = (event) => {
   }}
   
     />
+    <label>Image URL</label>
+<input
+  type="url"
+  placeholder="https://example.com/artist.jpg"
+  value={artist.image || ""}
+  onChange={(event) => {
+    setArtist({
+      ...artist,
+      image: event.target.value
+    });
+  }}
+/>
     <label>Genre</label>
 <input
   type="text"

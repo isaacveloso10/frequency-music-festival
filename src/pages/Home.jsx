@@ -18,7 +18,7 @@ function Home() {
 /></div>
       </section>
       <section className="home-about">
-  <h2>MORE THAN MUSIC</h2>
+  <h2>MORE THAN MUSIC.</h2>
 
   <div className="home-about-content">
     <p>

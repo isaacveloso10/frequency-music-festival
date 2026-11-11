@@ -16,32 +16,21 @@ function Schedule() {
         console.error("Error fetching artists:", error);
       });
   }, []);
-  const fridayArtists = artists.filter((artist) => artist.day === "Friday");
-  const saturdayArtists = artists.filter((artist) => artist.day === "Saturday");
-  const sundayArtists = artists.filter((artist) => artist.day === "Sunday");
+  const filteredArtists = artists.filter(
+  (artist) => artist.day === selectedDay
+);
 
-  const fridayMainStage = fridayArtists.filter(
-    (artist) => artist.stageId === "1",
-  );
-  const fridayGardenStage = fridayArtists.filter(
-    (artist) => artist.stageId === "2",
-  );
-  const saturdayMainStage = saturdayArtists.filter(
-    (artist) => artist.stageId === "1",
-  );
-  const saturdayGardenStage = saturdayArtists.filter(
-    (artist) => artist.stageId === "2",
-  );
-  const sundayMainStage = sundayArtists.filter(
-    (artist) => artist.stageId === "1",
-  );
-  const sundayGardenStage = sundayArtists.filter(
-    (artist) => artist.stageId === "2",
-  );
+const mainStageArtists = filteredArtists.filter(
+  (artist) => artist.stageId === "1"
+);
+
+const gardenStageArtists = filteredArtists.filter(
+  (artist) => artist.stageId === "2"
+);
   return (
-    <div>
-      <h1>Schedule</h1>
-      <div>
+    <div className="schedule-page">
+  <h1 className="schedule-title">SCHEDULE.</h1>
+      <div className="schedule-days">
   <button   className={selectedDay === "Friday" ? "active" : ""}
 onClick={() => setSelectedDay("Friday")}>
     Friday
@@ -57,81 +46,32 @@ onClick={() => setSelectedDay("Saturday")}>
     Sunday
   </button>
 </div>
-     {selectedDay === "Friday" && (
-  <> <h2>Friday</h2>
-      <h3>Main Stage</h3>
-      <ul>
-        {fridayMainStage.map((artist) => (
-          <li key={artist.id}>
-  <Link to={`/artists/${artist.id}`}>
-    {artist.name}
-  </Link>
-  {" - "}{artist.time}
-</li>
-        ))}
-      </ul>
-      <h3>Garden Stage</h3>
-      <ul>
-        {fridayGardenStage.map((artist) => (
-          <li key={artist.id}>
-  <Link to={`/artists/${artist.id}`}>
-    {artist.name}
-  </Link>
-  {" - "}{artist.time}
-</li>
-        ))}
-      </ul>  </>
-)}
-    {selectedDay === "Saturday" && (
-  <>  <h2>Saturday</h2>
-      <h3>Main Stage</h3>
-      <ul>
-        {saturdayMainStage.map((artist) => (
-          <li key={artist.id}>
-  <Link to={`/artists/${artist.id}`}>
-    {artist.name}
-  </Link>
-  {" - "}{artist.time}
-</li>
-        ))}
-      </ul>
-      <h3>Garden Stage</h3>
-      <ul>
-        {saturdayGardenStage.map((artist) => (
-          <li key={artist.id}>
-  <Link to={`/artists/${artist.id}`}>
-    {artist.name}
-  </Link>
-  {" - "}{artist.time}
-</li>
-        ))}
-      </ul>  </>
-)}
-   {selectedDay === "Sunday" && (
-  <>  <h2>Sunday</h2>
-      <h3>Main Stage</h3>
-      <ul>
-        {sundayMainStage.map((artist) => (
-          <li key={artist.id}>
-  <Link to={`/artists/${artist.id}`}>
-    {artist.name}
-  </Link>
-  {" - "}{artist.time}
-</li>
-        ))}
-      </ul>
-      <h3>Garden Stage</h3>
-      <ul>
-        {sundayGardenStage.map((artist) => (
-          <li key={artist.id}>
-  <Link to={`/artists/${artist.id}`}>
-    {artist.name}
-  </Link>
-  {" - "}{artist.time}
-</li>
-        ))}
-      </ul> </>
-)}
+
+<h3 className="schedule-stage-title">MAIN STAGE</h3>
+
+<ul className="schedule-list">
+  {mainStageArtists.map((artist) => (
+    <li key={artist.id} className="schedule-item">
+      <Link to={`/artists/${artist.id}`}>
+        {artist.name}
+      </Link>
+      <span>{artist.time}</span>
+    </li>
+  ))}
+</ul>
+
+<h3 className="schedule-stage-title">GARDEN STAGE</h3>
+
+<ul className="schedule-list">
+  {gardenStageArtists.map((artist) => (
+    <li key={artist.id} className="schedule-item">
+      <Link to={`/artists/${artist.id}`}>
+        {artist.name}
+      </Link>
+      <span>{artist.time}</span>
+    </li>
+  ))}
+</ul>
     </div>
   );
 }

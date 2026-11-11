@@ -10,6 +10,7 @@ function NewArtist() {
   const [day, setDay] = useState("Friday");
   const [time, setTime] = useState("");
   const [stageId, setStageId] = useState("1");
+  const [image, setImage] = useState("");
 
   function handleSubmit(event) {
   event.preventDefault();
@@ -20,7 +21,7 @@ function NewArtist() {
   day,
   time,
   stageId,
-  image: ""
+  image
 };
   axios
     .post("https://module-2-json-server-nv61.onrender.com/artists", newArtist)
@@ -33,17 +34,23 @@ function NewArtist() {
 }
 
   return (
-    <div>
-      
-<h1>Add New Artist</h1>
+<div className="edit-artist-page">      
+<h1 className="edit-artist-title">ADD NEW ARTIST.</h1>
 
-<form onSubmit={handleSubmit}>
+<form className="edit-artist-form" onSubmit={handleSubmit}>
   <label>Artist Name</label>
   <input
     type="text"
     value={name}
     onChange={(event) => setName(event.target.value)}
   />
+  <label>Image URL</label>
+<input
+  type="url"
+  placeholder="https://example.com/artist.jpg"
+  value={image}
+  onChange={(event) => setImage(event.target.value)}
+/>
 
   <label>Genre</label>
   <input

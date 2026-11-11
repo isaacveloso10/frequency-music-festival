@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Lineup from "./pages/Lineup";
 import Schedule from "./pages/Schedule";
 import About from "./pages/About";
+import Tickets from "./pages/Tickets";
 import "./App.css";
 
 import NavBar from "./components/NavBar";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/artists/new" element={<NewArtist />} />
         <Route path="/artists/:id" element={<ArtistDetails />} />
         <Route path="/artists/:id/edit" element={<EditArtist />} />
+        <Route path="/tickets" element={<Tickets />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
